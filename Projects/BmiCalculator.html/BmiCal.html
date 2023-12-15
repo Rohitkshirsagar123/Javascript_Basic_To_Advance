@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<style>
+    .main{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .bmi_cal{
+        width: 400px;
+        height: 1000x;
+        border: 1px solid black;
+        padding: 40px;
+        background-color: rgb(42, 41, 41);
+        color: white;
+        border-radius: 10px;
+        
+    }
+    input{
+        margin: 10px 0px;
+        width: 100%;
+        padding: 8px;
+        color: black;
+       
+    }
+    .button{
+        padding: 10px;
+        color: black;
+        background-color: green;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
+<body>
+
+    <center><h1>BMI Calculator</h1></center>
+
+    <div class="main">
+        <div class="bmi_cal">
+           <form action="">
+            <label for="">Enter Height in Cm</label>
+            <input id="height" type="number">
+            <label for="">Enter Weight in KG</label>
+            <input id="weight" type="number">
+
+            <button class="button"> Calculate</button>
+           </form>
+
+           <div id="result"></div>
+        </div>
+    </div>
+
+    
+</body>
+
+<script>
+    const form = document.querySelector("form");
+    console.log(form);
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const height = parseInt(document.querySelector("#height").value);
+        const weight = parseInt(document.querySelector("#weight").value);
+        const result =  document.querySelector("#result");
+
+        if(height === '' || height< 0 || isNaN(height)){
+            result.innerHTML ="Please give Valid height";
+            result.style.color="red";
+        }
+
+        else if(weight === '' || weight < 0 || isNaN(weight)){
+            result.innerHTML ="Please give Valid weight";
+            result.style.color="red";
+        }
+        else{
+            const bmi = (weight / ((height*height)/10000)).toFixed(2)
+            result.innerHTML =`<h3>Result is: ${bmi}</h3>`;
+            result.style.color="green";
+        }
+
+    })
+</script>
+</html>
